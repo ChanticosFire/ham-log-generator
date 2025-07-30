@@ -1,356 +1,195 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>业余无线电台BD4UOG通联日志</title>
     <style>
+        /* Reset and base styles */
+        * { box-sizing: border-box; }
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             padding: 0;
+            line-height: 1.5;
+            background-color: #f5f7fa;
+            color: #333;
         }
-
-        .container {
-            width: 80%;
-            margin: auto;
-            overflow: hidden;
-        }
-
         header {
-            background: #0056b3;
-            color: white;
-            padding-top: 30px;
-            min-height: 70px;
-            border-bottom: #e8491d 3px solid;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 1.5rem 0;
+            text-align: center;
         }
-
-        header a {
-            color: #ffffff;
-            text-decoration: none;
-            text-transform: uppercase;
-            font-size: 16px;
+        .container {
+            max-width: 80%;
+            margin: 0 auto;
+            padding: 1rem;
         }
-
-        header ul {
-            padding: 0;
-            margin: 0;
-            list-style: none;
-            overflow: hidden;
+        .profile {
+            background-color: #ffffff;
+            border: 1px solid #e0e6ed;
+            border-radius: 6px;
+            padding: 1rem 1.25rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-
-        header li {
-            float: left;
-            display: inline;
-            padding: 0 20px 0 20px;
-        }
-
-        header #branding {
-            float: left;
-        }
-
-        header #branding h1 {
-            margin: 0;
-        }
-
-        header nav {
-            float: right;
-            margin-top: 10px;
-        }
-
-        header .highlight, header .current a {
-            color: #e8491d;
-            font-weight: bold;
-        }
-
-        header a:hover {
-            color: #ffffff;
-            font-weight: bold;
-        }
-
+        .profile h2 { margin-top: 0; }
+        .profile ul { list-style: none; padding: 0; margin: 0; }
+        .profile li { margin-bottom: 0.5rem; }
+        .profile li strong { display: inline-block; width: 130px; }
+        .log h2 { margin-top: 0; margin-bottom: 0.5rem; }
+        .table-responsive { overflow-x: auto; }
         table {
-            border-collapse: collapse;
             width: 100%;
-            margin: 25px 0;
-            font-size: 0.9em;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            border-collapse: collapse;
+            margin-bottom: 2rem;
         }
-
         th, td {
-            padding: 12px 15px;
-        }
-
-        th {
-            background-color: #009879;
-            color: white;
+            padding: 0.625rem 0.75rem;
+            border-bottom: 1px solid #e0e6ed;
             text-align: left;
+            white-space: nowrap;
+        }
+        th {
+            background-color: #3498db;
+            color: #ffffff;
+            position: sticky;
+            top: 0;
+            z-index: 2;
             cursor: pointer;
         }
-
-        tr {
-            border-bottom: 1px solid #dddddd;
-        }
-
-        tr:nth-of-type(even) {
-            background-color: #f3f3f3;
-        }
-
-        tr:last-of-type {
-            border-bottom: 2px solid #009879;
-        }
-
-        tr:hover {
-            background-color: #f1f1f1;
-        }
-
+        tr:nth-child(even) { background-color: #f9fcff; }
+        tr:hover { background-color: #eef5ff; }
         .pagination {
-            margin: 30px 0;
             text-align: center;
+            margin-top: 1rem;
+            margin-bottom: 2rem;
         }
-
         .pagination button {
-            padding: 8px 16px;
-            margin: 0 10px;
+            padding: 0.5rem 1rem;
+            margin: 0 0.5rem;
             border: none;
-            border-radius: 5px;
-            background-color: #0056b3;
-            color: white;
+            border-radius: 4px;
+            background-color: #3498db;
+            color: #ffffff;
             cursor: pointer;
         }
-
-        .pagination button:hover {
-            background-color: #e8491d;
-        }
-
+        .pagination button:hover { background-color: #2c3e50; }
         footer {
-            background: #0056b3;
-            color: white;
             text-align: center;
-            padding: 10px 0;
+            padding: 1rem;
+            font-size: 0.875rem;
+            color: #888;
         }
-        .hidden-text {
-            color: #0056b3;
-            font-size: 1em;
-            text-align: right;
-        }         
     </style>
 </head>
 <body>
     <header>
-        <div class="container">
-            <div id="branding">
-                <h1>BD4UOG</h1>
-            </div>
-            <nav>
-             <!--
-              <ul>
-                    <li class="current"><a href="#">主页</a></li>
-                    <li><a href="#">关于</a></li>
-                    <li><a href="#">联系方式</a></li>
-                </ul>
-            -->
-            </nav>
-        </div>
+        <h1>业余无线电台 BD4UOG 通联日志</h1>
     </header>
-
     <div class="container">
-        <h2>通联日志</h2>
-        <p>根据有关规定，业余无线电爱好者必须记录通联日志。本页面公布业余无线电台BD4UOG的通联日志。</p>
-
-        <table id="logTable">
-            <tr>
-                <th onclick="sortTable(0)">日期 DATE</th>
+        <section class="profile">
+            <h2>个人资料</h2>
+            <ul>
+                <li><strong>呼号:</strong> BD4UOG</li>
+                <li><strong>操作证等级:</strong> B类</li>
+                <li><strong>操作员:</strong> BD4UOG</li>
+                <li><strong>位置:</strong> Nanjing,China</li>
+            </ul>
+        </section>
+        <section class="log">
+            <h2>通联日志</h2>
+            <div class="table-responsive">
+                <table id="logTable">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable(0)">日期 DATE</th>
                 <th onclick="sortTable(1)">时间 TIME</th>
                 <th onclick="sortTable(2)">呼号 CALLSIGN</th>
-                <th onclick="sortTable(3)">频率 MHz</th>
+                <th onclick="sortTable(3)">频率</th>
                 <th onclick="sortTable(4)">模式 MODE</th>
-                <th onclick="sortTable(5)">己方信号RST</th>
-                <th onclick="sortTable(6)">对方信号RST</th>
-                <th onclick="sortTable(7)">己方功率PWR</th>
-                <th onclick="sortTable(8)">对方功率PWR</th>
-                <th onclick="sortTable(9)">电台位置QTH</th>
-                <th onclick="sortTable(10)">设备RIG</th>
-                <th onclick="sortTable(11)">天线ANT</th>
-            </tr>
-            <!-- 示例行，实际使用时需要用实际数据填充 -->
-            <tr>
-                <td>2024-10-05</td>
-                <td>20:57</td>
-                <td>BA4QCS</td>
-                <td>430.610</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>25W</td>
-                <td>南京市方山</td>
-                <td>森海克斯8800</td>
-                <td>RH-770</td>
-            </tr>
-            <tr>
-                <td>2024-08-06</td>
-                <td>23:30</td>
-                <td>BA4QMJ</td>
-                <td>438.500</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>17W</td>
-                <td>南京市紫金山</td>
-                <td>森海克斯8800</td>
-                <td>RH-770</td>
-            </tr>
-            <tr>
-                <td>2024-08-06</td>
-                <td>23:25</td>
-                <td>BD4WTM</td>
-                <td>438.500</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>5W</td>
-                <td>南京市紫金山</td>
-                <td>森海克斯8800</td>
-                <td>RH-770</td>
-            </tr>
-            <tr>
-                <td>2023-11-19</td>
-                <td>16:50</td>
-                <td>BG2EPO</td>
-                <td>439.800</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>5W</td>
-                <td>南京市新街口</td>
-                <td>森海克斯8800</td>
-                <td>RH-770</td>
-            </tr>
-            <tr>
-                <td>2024-02-29</td>
-                <td>14:10</td>
-                <td>BG4TCR</td>
-                <td>430.610</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>5W</td>
-                <td>武汉市岳家嘴</td>
-                <td>森海克斯8800</td>
-                <td>RH-770</td>
-            </tr>
-            <!-- 更多行可以添加在这里 -->
-            <tr>
-                <td>2023-12-02</td>
-                <td>15:00</td>
-                <td>BG4WEQ</td>
-                <td>430.610</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>15W</td>
-                <td>南京</td>
-                <td>泉盛UV-K6</td>
-                <td>RH-770</td>
-            </tr>
-            <!--
-            <tr>
-                <td>2023-11-19</td>
-                <td>16:50</td>
-                <td>BG2EPO</td>
-                <td>439.800</td>
-                <td>FM</td>
-                <td>59</td>
-                <td>59</td>
-                <td>5W</td>
-                <td>5W</td>
-                <td>南京</td>
-                <td>森海克斯8800</td>
-                <td>RH-770</td>
-            </tr>
-            -->
-        </table>
-
+                <th onclick="sortTable(5)">Sent RST</th>
+                <th onclick="sortTable(6)">Received RST</th>
+                <th onclick="sortTable(7)">Sent PWR</th>
+                <th onclick="sortTable(8)">Received PWR</th>
+                <th onclick="sortTable(9)">QTH</th>
+                <th onclick="sortTable(10)">设备 RIG</th>
+                <th onclick="sortTable(11)">天线 ANT</th>
+                <th onclick="sortTable(12)">Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                <tr><td>2024/10/5</td><td>20:57</td><td>BA4QCS</td><td>430.61</td><td>FM</td><td>59</td><td>59</td><td>5W</td><td>25W</td><td>南京市方山</td><td>森海克斯8800</td><td>RH-770</td><td></td></tr>
+                <tr><td>2024/8/6</td><td>23:30</td><td>BA4QMJ</td><td>438.5</td><td>FM</td><td>59</td><td>59</td><td>5W</td><td>17W</td><td>南京市紫金山</td><td>森海克斯8800</td><td>RH-770</td><td></td></tr>
+                <tr><td>2024/8/6</td><td>23:25</td><td>BD4WTM</td><td>438.5</td><td>FM</td><td>59</td><td>59</td><td>5W</td><td>5W</td><td>南京市紫金山</td><td>森海克斯8800</td><td>RH-770</td><td></td></tr>
+                <tr><td>2023/11/19</td><td>16:50</td><td>BG2EPO</td><td>439.8</td><td>FM</td><td>59</td><td>59</td><td>5W</td><td>5W</td><td>南京市新街口</td><td>森海克斯8800</td><td>RH-770</td><td></td></tr>
+                <tr><td>2024/2/29</td><td>14:10</td><td>BG4TCR</td><td>430.61</td><td>FM</td><td>59</td><td>59</td><td>5W</td><td>5W</td><td>武汉市岳家嘴</td><td>森海克斯8800</td><td>RH-770</td><td></td></tr>
+                <tr><td>2023/12/2</td><td>15:00</td><td>BG4WEQ</td><td>430.61</td><td>FM</td><td>59</td><td>59</td><td>5W</td><td>15W</td><td>南京</td><td>泉盛UV-K6</td><td>RH-770</td><td></td></tr>
+                <tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
         <div class="pagination">
             <button onclick="previousPage()">上页</button>
-            <p id="pageInfo">显示第 1 至 20 项结果，共 xx 项</p>
+            <span id="pageInfo"></span>
             <button onclick="nextPage()">下页</button>
         </div>
     </div>
-
     <footer>
-        <p>Copyright © 2023 中国业余无线电台BD4UOG Powered by Cloudflare</p>
-        <div class="hidden-text">
-                抄收本网页59+！！！
-        </div>
+        <p>Copyright © 2025 中国业余无线电台BD4UOG</p>
     </footer>
-
     <script>
         let currentPage = 1;
-        const rowsPerPage = 20; // 希望每页显示的行数
-
+        const rowsPerPage = 20;
         function displayRows() {
-            const table = document.getElementById("logTable");
-            const rows = table.getElementsByTagName("tr");
+            const table = document.getElementById('logTable');
+            const rows = table.getElementsByTagName('tr');
             const totalRows = rows.length;
-
             const startRow = (currentPage - 1) * rowsPerPage + 1;
             const endRow = startRow + rowsPerPage - 1;
-
             for (let i = 1; i < totalRows; i++) {
                 if (i >= startRow && i <= endRow) {
-                    rows[i].style.display = "";
+                    rows[i].style.display = '';
                 } else {
-                    rows[i].style.display = "none";
+                    rows[i].style.display = 'none';
                 }
             }
-
-            document.getElementById("pageInfo").innerText = `显示第 ${startRow} 至 ${Math.min(endRow, totalRows-1)} 项结果，共 ${totalRows-1} 项`;
+            document.getElementById('pageInfo').innerText = '显示第 ' + startRow + ' 至 ' + Math.min(endRow, totalRows - 1) + ' 项结果，共 ' + (totalRows - 1) + ' 项';
         }
-
         function nextPage() {
-            const table = document.getElementById("logTable");
-            const totalRows = table.getElementsByTagName("tr").length;
-
+            const table = document.getElementById('logTable');
+            const totalRows = table.getElementsByTagName('tr').length;
             if (currentPage * rowsPerPage < totalRows - 1) {
                 currentPage++;
                 displayRows();
             }
         }
-
         function previousPage() {
             if (currentPage > 1) {
                 currentPage--;
                 displayRows();
             }
         }
-
         function sortTable(columnIndex) {
-            const table = document.getElementById("logTable");
-            let rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
-            switching = true;
-            dir = "asc";
-
+            const table = document.getElementById('logTable');
+            let switching = true;
+            let dir = 'asc';
             while (switching) {
                 switching = false;
-                rows = table.rows;
-
-                for (i = 1; i < (rows.length - 1); i++) {
-                    shouldSwitch = false;
-                    x = rows[i].getElementsByTagName("TD")[columnIndex];
-                    y = rows[i + 1].getElementsByTagName("TD")[columnIndex];
-
-                    if (dir == "asc") {
+                const rows = table.rows;
+                let i;
+                for (i = 1; i < rows.length - 1; i++) {
+                    let shouldSwitch = false;
+                    const x = rows[i].getElementsByTagName('TD')[columnIndex];
+                    const y = rows[i + 1].getElementsByTagName('TD')[columnIndex];
+                    if (dir == 'asc') {
                         if (x.innerHTML.toLowerCase() > y.innerHTML.toLowerCase()) {
                             shouldSwitch = true;
                             break;
                         }
-                    } else if (dir == "desc") {
+                    } else if (dir == 'desc') {
                         if (x.innerHTML.toLowerCase() < y.innerHTML.toLowerCase()) {
                             shouldSwitch = true;
                             break;
@@ -360,17 +199,16 @@
                 if (shouldSwitch) {
                     rows[i].parentNode.insertBefore(rows[i + 1], rows[i]);
                     switching = true;
-                    switchcount++;      
                 } else {
-                    if (switchcount == 0 && dir == "asc") {
-                        dir = "desc";
+                    if (dir == 'asc') {
+                        dir = 'desc';
                         switching = true;
                     }
                 }
             }
+            currentPage = 1;
+            displayRows();
         }
-
-        // 初始化显示
         displayRows();
     </script>
 </body>
