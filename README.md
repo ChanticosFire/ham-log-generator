@@ -38,6 +38,12 @@ CSV 文件列模板如下，可自定义：
   "location": "Nanjing,China"
 }
 ```
+### 署名信息
+生成的页面底部会自动显示如下署名信息：
+`Copyright © 2025 中国业余无线电台 <你的呼号>`
+
+`<你的呼号>` 字段来自 `config.json` 文件，其他用户使用本模板时可通过修改该配置文件自动生成属于自己的署名信息。
+
 
 ## 使用方法（本地）
 
@@ -58,3 +64,5 @@ python3 generate_contact_log.py --csv data.csv --config config.json --output ind
 ##  欢迎 Fork 与使用
 
 欢迎各位 HAM 同好 Fork 本项目，记录和展示自己的通联日志。
+
+Powered by HAM Log Generator (Template by BD4UOG)
