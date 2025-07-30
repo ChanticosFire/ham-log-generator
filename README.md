@@ -2,6 +2,8 @@
 
 本项目是一个简单、高效的通联日志自动生成器，适用于业余无线电爱好者（HAM）分享个人 QSO 记录。使用 CSV 数据和 JSON 配置，生成结构化的 HTML 页面，支持部署到 GitHub Pages 或 Cloudflare Pages。
 
+点击 Use this template 创建你的个人 HAM 日志仓库
+
 ---
 
 ## 项目结构说明
