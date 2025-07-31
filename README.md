@@ -29,13 +29,15 @@ CSV 文件列模板如下，可自定义：
 ```
 
 ## 自定义个人资料块：config.json
-可自由添加和变更条目
+可自由添加和变更条目，添加模板之外的条目需自行修改脚本
 ```json
 {
   "callsign": "BD4UOG",
   "license": "B类",
   "operator": "Chantico's Fire",
-  "location": "Nanjing,China"
+  "location": "City",
+  "grid": "XXXXxx",
+  "email": "example@github.com"
 }
 ```
 ### 署名信息
