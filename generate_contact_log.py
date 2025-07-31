@@ -89,7 +89,8 @@ def build_html(rows: list, config: dict) -> str:
     license_class = html.escape(str(config.get("license", "")))
     operator = html.escape(str(config.get("operator", "")))
     location = html.escape(str(config.get("location", "")))
-    year = datetime.now().year
+    grid = html.escape(str(config.get("grid", "")))
+    email = html.escape(str(config.get("email", "")))
 
     # Derive table headings and display names.  If a header contains
     # English names (e.g. "DATE"), insert a space before the English
@@ -145,8 +146,10 @@ def build_html(rows: list, config: dict) -> str:
 
     # Compose the final HTML document
     # Prebuild optional profile lines outside the template to avoid nested f-strings
-    operator_line = f"<li><strong>操作员:</strong> {operator}</li>" if operator else ""
-    location_line = f"<li><strong>位置:</strong> {location}</li>" if location else ""
+    operator_line = f"<li><strong>OPR:</strong> {operator}</li>" if operator else ""
+    location_line = f"<li><strong>QTH:</strong> {location}</li>" if location else ""
+    grid_line = f"<li><strong>GRID:</strong> {grid}</li>" if grid else ""
+    email_line = f"<li><strong>EMAIL:</strong> {email}</li>" if email else ""
     # Construct the HTML document using str.format.  Double braces escape literal braces.
     template = """<!DOCTYPE html>
 <html lang="zh-CN">
@@ -242,10 +245,12 @@ def build_html(rows: list, config: dict) -> str:
         <section class="profile">
             <h2>个人资料</h2>
             <ul>
-                <li><strong>呼号:</strong> {callsign}</li>
-                <li><strong>操作证等级:</strong> {license_class}</li>
+                <li><strong>CALL:</strong> {callsign}</li>
+                <li><strong>CLASS:</strong> {license_class}</li>
                 {operator_line}
                 {location_line}
+                {grid_line}
+                {email_line}
             </ul>
         </section>
         <section class="log">
