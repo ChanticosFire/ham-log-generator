@@ -151,6 +151,7 @@ def build_html(rows: list, config: dict) -> str:
     grid_line = f"<li><strong>GRID:</strong> {grid}</li>" if grid else ""
     email_line = f"<li><strong>EMAIL:</strong> {email}</li>" if email else ""
     # Construct the HTML document using str.format.  Double braces escape literal braces.
+    year = datetime.now().year
     template = """<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -355,6 +356,8 @@ def build_html(rows: list, config: dict) -> str:
         license_class=license_class,
         operator_line=operator_line,
         location_line=location_line,
+        grid_line=grid_line,
+        email_line=email_line,
         header_html=header_html,
         body_html=body_html,
         year=year
